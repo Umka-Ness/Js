@@ -989,62 +989,142 @@
 
 
 // <---------Поиск по силектору----------->
-const mana = document.querySelector(".ulu")
-mana.style.color = "blue"
-console.log(mana)
+// const mana = document.querySelector(".ulu")
+// mana.style.color = "blue"
+// console.log(mana)
 
-const two = document.querySelector(".u")
-two.style.color = "red"
-console.log(two)
-
-
-const agam = document.querySelectorAll("li")
-console.log(agam)
-
-// <---------Выводим содержимое тега\силектора------------->
-const text = document.querySelector(".tx")
-console.log(text.textContent)
+// const two = document.querySelector(".u")
+// two.style.color = "red"
+// console.log(two)
 
 
-// <----------Replace picture----------->
-let y = 0
-const picture = document.querySelector(".pic")
-const but = document.querySelector(".btn")
-const bod = document.querySelector(".body")
-const tex = document.querySelectorAll("button")
-const te = document.querySelector(".btn-one")
-console.log(tex)
-function replacee() {
+// const agam = document.querySelectorAll("li")
+// console.log(agam)
+
+// // <---------Выводим содержимое тега\силектора------------->
+// const text = document.querySelector(".tx")
+// console.log(text.textContent)
+
+
+// // <----------Replace picture----------->
+// let y = 0
+// const picture = document.querySelector(".pic")
+// const but = document.querySelector(".btn")
+// const bod = document.querySelector(".body")
+// const tex = document.querySelectorAll("button")
+// const te = document.querySelector(".btn-one")
+// console.log(tex)
+// function replacee() {
     
-    let onePic = 'https://placeimg.com/640/480/tech'
-    let troPic = 'https://goo.su/1Di3v3p'
-    y += 1
-    if (y % 2 === 0) {
-        console.log(y)
-        console.log(onePic)
-        console.log(tex)
-        return picture.src = onePic,bod.style.background = "#392B2B",tex.style.color = "white"
-    }
-    console.log(y)
-    console.log(troPic)
-    return picture.src = troPic,bod.style.background = "white",picture.style.width = "150px"
+//     let onePic = 'https://placeimg.com/640/480/tech'
+//     let troPic = 'https://goo.su/1Di3v3p'
+//     y += 1
+//     if (y % 2 === 0) {
+//         console.log(y)
+//         console.log(onePic)
+//         console.log(tex)
+//         return picture.src = onePic,bod.style.background = "#392B2B",tex.style.color = "white"
+//     }
+//     console.log(y)
+//     console.log(troPic)
+//     return picture.src = troPic,bod.style.background = "white",picture.style.width = "150px"
+// }
+
+// replacee()
+
+// but.addEventListener("click", replacee)
+
+// te.classList.remove("btn-one")
+// te.classList.add("btn")
+// te.style.color = "red"
+// te.style.background = "#33ffff"
+
+// // <----------Добавление атрибутов хтмл---------------->
+// const man = document.querySelector(".ulu")
+// const newMan = document.createElement("li")
+// const newMa = document.createElement("li")
+// man.append(newMan,newMa)
+// newMan.textContent = "lalala"
+// newMan.classList.add("lico")
+
+
+
+
+//-------------------- Promose--------------------
+// const promise = new Promise(( resolve, reject ) => {
+//     const random = Math.random() < 0.5
+
+// if (random) {
+//     resolve("it`s Good")
+// }
+// else {
+//     reject("No Good")
+// }
+// promise.then(value => {
+//     console.log("onResolve " + value)
+// }, error => {
+//     console.log("onReject " + error)
+// } ) } )
+
+const timer = document.getElementById("timerr")
+const stopTimer = document.getElementById("stop")
+const startTimer = document.getElementById("start")
+const stopAndStart = document.getElementById("stopAndStart")
+let countTap = 0
+
+timeUpdate()
+
+function timeUpdate() {
+    const newDate = new Date(`Jan 1, ${new Date().getFullYear() +1}`)
+    console.log(newDate)
+
+    const neew = new Date()
+    console.log(neew)
+
+    const diff = newDate - neew
+    console.log(diff
+        )
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+    const hours = Math.floor(diff / (1000 * 60 * 60 ) % 24)
+    const minutes = Math.floor(diff / (1000 * 60) % 60)
+    const sec = Math.floor((diff / 1000) % 60)
+
+    timer.textContent = `${days} d. ${hours} h. ${minutes} minutes. ${sec} sec.`
 }
 
-replacee()
-
-but.addEventListener("click", replacee)
-
-te.classList.remove("btn-one")
-te.classList.add("btn")
-te.style.color = "red"
-te.style.background = "#33ffff"
-
-// <----------Добавление атрибутов хтмл---------------->
-const man = document.querySelector(".ulu")
-const newMan = document.createElement("li")
-const newMa = document.createElement("li")
-man.append(newMan,newMa)
-newMan.textContent = "lalala"
-newMan.classList.add("lico")
+let intervalId = setInterval(timeUpdate,1000)
 
 
+
+startTimer.addEventListener("click", e => {
+    stopAndStart.disabled = false
+    stopTimer.disabled = false
+    startTimer.disabled = true
+    intervalId = setInterval(timeUpdate,1000)
+    countTap += 1
+})
+stopTimer.addEventListener("click", e =>{
+    stopAndStart.disabled = true
+    stopTimer.disabled = true
+    startTimer.disabled = false
+    clearInterval(intervalId)
+    countTap += 1
+})
+
+stopAndStart.addEventListener("click", oneClickFun)
+
+function oneClickFun() {
+    if(countTap % 2 === 0) {
+        
+        clearInterval(intervalId)
+        stopAndStart.id = "start"
+        stopAndStart.disabled = false
+        countTap += 1
+        console.log(12312)
+    }
+    else {
+        intervalId = setInterval(timeUpdate,1000)
+        stopAndStart.id = "stopAndStart"
+        countTap += 1
+    }
+}
