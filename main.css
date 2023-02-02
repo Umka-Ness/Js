@@ -148,7 +148,7 @@ a span :nth-child(4) {
     align-items: center;
 }
 
-#stop {
+.oi {
     display: flex;
     justify-content: center;
     align-items: center;
