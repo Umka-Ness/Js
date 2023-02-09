@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 // const array = {
 //     a: 12,
 //     b: 'lalala',
@@ -13,6 +14,8 @@
 // console.log(array.Counter())
 // console.log(array.addPoint(100))
 // console.log(array)
+
+
 
 
 // Constructor down
@@ -1135,35 +1138,160 @@
 //         stopTimer.disabled = false
 //     }
 // }
+// -------------Promise----------------
+// const data = {
+//     id: 1,
+//     text: "it`s text",
+//     status:true,
+// }
+// console.log("Promise go to back")
+// const promise = new Promise((resolve, rejects) => {
+//     setTimeout(() => {
+//         if (data.id) resolve(data),console.log("Promise launch")
+//     rejects(data)
+//     })
+// },2000)
+//     .then(data => {
+//         setTimeout(() => {
+//             if (data.id = "New id") {
+//         data.id = " this id it`s Empty"
+//     }
+//     console.log(data)
+//     return data
+// },2000)
+//     }).catch(data => {
+//         setTimeout(() => {
+//         data.id = "New id"
+//         console.log("If Error")
+//         console.log(data)
+//         return data
+//     },2000)
+// })
 
-const data = {
-    id: 1,
-    text: "it`s text",
-    status:true,
-}
-console.log("Promise go to back")
-const promise = new Promise((resolve, rejects) => {
-    setTimeout(() => {
-        if (data.id) resolve(data),console.log("Promise launch")
-    rejects(data)
-    })
-},2000)
-    .then(data => {
-        setTimeout(() => {
-            if (data.id = "New id") {
-        data.id = " this id it`s Empty"
-    }
-    console.log(data)
-    return data
-},2000)
-    }).catch(data => {
-        setTimeout(() => {
-        data.id = "New id"
-        console.log("If Error")
-        console.log(data)
-        return data
-    },2000)
-})
+
+//----------Generator Promises----------------
+
+// const inp = document.querySelector(".text")
+// const btn = document.querySelector(".btn")
 
 
+
+
+// function createPromise(delay) {
     
+//     const promise = new Promise((resolve, rejects) => {
+//         setTimeout(() => {
+//         const random = Math.random() > 0.3
+//         if (random) {
+//         resolve("good")
+//     }
+//     else {
+//         rejects("no good")
+//     }
+//     },delay)
+    
+// })
+//     return promise
+// }
+
+// function amountSearch(e) {
+//     e.preventDefault()
+//     delay = Number(inp.value)
+//     const amounte = 5
+//     for (let i = 1; i !== amounte+1; i++) {
+//         createPromise(delay*i)
+//             .then(value => {
+//     Notiflix.Notify.success('It`s ok')
+// }).catch(value => {
+//     Notiflix.Notify.failure('No Normal')
+// })
+//     }
+//     Notiflix.Notify.success('I Working')
+// }
+
+// btn.addEventListener("click",amountSearch)
+
+//-------------HTTP---------------
+
+const URL = 'https://jsonplaceholder.typicode.com/users'
+
+fetch(URL).then((response) => console.log(response))
+
+const postToAdd = {
+  author: "Mango",
+  body: "CRUD is awesome",
+};
+
+const options = {
+  method: "POST",
+  body: JSON.stringify(postToAdd),
+  headers: {
+    "Content-Type": "application/json; charset=UTF-8",
+  },
+};
+const postToAdd2 = {
+  author: "Mango",
+    body: "CRUD is realy awesome",
+  title: "lalala",
+};
+
+const options2 = {
+  method: "PATCH",
+  body: JSON.stringify(postToAdd2),
+  headers: {
+    "Content-Type": "application/json; charset=UTF-8",
+    },
+};
+
+const URL1 = 'https://jsonplaceholder.typicode.com/posts'
+
+const URL2 = 'https://jsonplaceholder.typicode.com/posts/5'
+
+fetch(URL1, options).then((response1) => response1.json()).then((value) => console.log(value)).catch((err) => console.log(err))
+
+fetch(URL1).then((response1) => response1.json()).then(({id}) => console.log(id)).catch((err) => console.log(err))
+
+fetch(URL2, options2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
+
+fetch(URL2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
+console.log(1234)
+// const fetchPostsBtn = document.querySelector(".btn");
+// const userList = document.querySelector(".posts");
+
+// fetchPostsBtn.addEventListener("click", () => {
+//   fetchPosts()
+//     .then((posts) => renderPosts(posts))
+//     .catch((error) => console.log(error));
+// });
+
+// function fetchPosts() {
+//   const params = new URLSearchParams({
+//     _limit: 5,
+//     // Change the group number here
+//     _page: 2
+//   });
+
+//   return fetch(`https://jsonplaceholder.typicode.com/posts?${params}`).then(
+//     (response) => {
+//       if (!response.ok) {
+//         throw new Error(response.status);
+//       }
+//       return response.json();
+//     }
+//   );
+// }
+
+// function renderPosts(posts) {
+//   const markup = posts
+//     .map(({ id, title, body, userId }) => {
+//       return `<li>
+//           <h2 class="post-title">${title.slice(0, 30)}</h2>
+//           <p><b>Post id</b>: ${id}</p>
+//           <p><b>Author id</b>: ${userId}</p>
+//           <p class="post-body">${body}</p>
+//         </li>`;
+//     })
+//     .join("");
+//   userList.innerHTML = markup;
+// }
+
