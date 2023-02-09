@@ -1213,47 +1213,47 @@ import Notiflix from 'notiflix';
 
 //-------------HTTP---------------
 
-const URL = 'https://jsonplaceholder.typicode.com/users'
+// const URL = 'https://jsonplaceholder.typicode.com/users'
 
-fetch(URL).then((response) => console.log(response))
+// fetch(URL).then((response) => console.log(response))
 
-const postToAdd = {
-  author: "Mango",
-  body: "CRUD is awesome",
-};
+// const postToAdd = {
+//   author: "Mango",
+//   body: "CRUD is awesome",
+// };
 
-const options = {
-  method: "POST",
-  body: JSON.stringify(postToAdd),
-  headers: {
-    "Content-Type": "application/json; charset=UTF-8",
-  },
-};
-const postToAdd2 = {
-  author: "Mango",
-    body: "CRUD is realy awesome",
-  title: "lalala",
-};
+// const options = {
+//   method: "POST",
+//   body: JSON.stringify(postToAdd),
+//   headers: {
+//     "Content-Type": "application/json; charset=UTF-8",
+//   },
+// };
+// const postToAdd2 = {
+//   author: "Mango",
+//     body: "CRUD is realy awesome",
+//   title: "lalala",
+// };
 
-const options2 = {
-  method: "PATCH",
-  body: JSON.stringify(postToAdd2),
-  headers: {
-    "Content-Type": "application/json; charset=UTF-8",
-    },
-};
+// const options2 = {
+//   method: "PATCH",
+//   body: JSON.stringify(postToAdd2),
+//   headers: {
+//     "Content-Type": "application/json; charset=UTF-8",
+//     },
+// };
 
-const URL1 = 'https://jsonplaceholder.typicode.com/posts'
+// const URL1 = 'https://jsonplaceholder.typicode.com/posts'
 
-const URL2 = 'https://jsonplaceholder.typicode.com/posts/5'
+// const URL2 = 'https://jsonplaceholder.typicode.com/posts/5'
 
-fetch(URL1, options).then((response1) => response1.json()).then((value) => console.log(value)).catch((err) => console.log(err))
+// fetch(URL1, options).then((response1) => response1.json()).then((value) => console.log(value)).catch((err) => console.log(err))
 
-fetch(URL1).then((response1) => response1.json()).then(({id}) => console.log(id)).catch((err) => console.log(err))
+// fetch(URL1).then((response1) => response1.json()).then(({id}) => console.log(id)).catch((err) => console.log(err))
 
-fetch(URL2, options2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
+// fetch(URL2, options2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
 
-fetch(URL2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
+// fetch(URL2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
 console.log(1234)
 // const fetchPostsBtn = document.querySelector(".btn");
 // const userList = document.querySelector(".posts");
