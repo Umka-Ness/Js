@@ -1212,6 +1212,7 @@ import Notiflix from 'notiflix';
 // btn.addEventListener("click",amountSearch)
 
 //-------------HTTP---------------
+// const btn = document.querySelector(".btn")
 
 // const URL = 'https://jsonplaceholder.typicode.com/users'
 
@@ -1243,55 +1244,38 @@ import Notiflix from 'notiflix';
 //     },
 // };
 
-// const URL1 = 'https://jsonplaceholder.typicode.com/posts'
+// let page = 1
+
+// btn.addEventListener("click", e => {
+//   page += 1
+//   fetch(URL1).then((response1) => response1.json()).then((value) => value.map(i => console.log(`id: ${i.id} name: ${i.name}`))).catch((err) => console.log(err))
+// })
+
+// const URL1 = `https://jsonplaceholder.typicode.com/users/${page}`
 
 // const URL2 = 'https://jsonplaceholder.typicode.com/posts/5'
 
 // fetch(URL1, options).then((response1) => response1.json()).then((value) => console.log(value)).catch((err) => console.log(err))
 
-// fetch(URL1).then((response1) => response1.json()).then(({id}) => console.log(id)).catch((err) => console.log(err))
+
 
 // fetch(URL2, options2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
 
 // fetch(URL2).then((response2) => response2.json()).then((value) => console.log(value)).catch((err) => console.log(err))
-console.log(1234)
-// const fetchPostsBtn = document.querySelector(".btn");
-// const userList = document.querySelector(".posts");
 
-// fetchPostsBtn.addEventListener("click", () => {
-//   fetchPosts()
-//     .then((posts) => renderPosts(posts))
-//     .catch((error) => console.log(error));
-// });
+const text = document.querySelector(".text")
+const btn = document.querySelector(".btn")
 
-// function fetchPosts() {
-//   const params = new URLSearchParams({
-//     _limit: 5,
-//     // Change the group number here
-//     _page: 2
-//   });
+function fetchData(value) {
+const URL = `https://jsonplaceholder.typicode.com/users/${text.value}`
 
-//   return fetch(`https://jsonplaceholder.typicode.com/posts?${params}`).then(
-//     (response) => {
-//       if (!response.ok) {
-//         throw new Error(response.status);
-//       }
-//       return response.json();
-//     }
-//   );
-// }
+  return fetch((URL)).then((response) => response.json()).then((val) => console.log(`id: ${val.id}  name: ${val.name}`))
+}
 
-// function renderPosts(posts) {
-//   const markup = posts
-//     .map(({ id, title, body, userId }) => {
-//       return `<li>
-//           <h2 class="post-title">${title.slice(0, 30)}</h2>
-//           <p><b>Post id</b>: ${id}</p>
-//           <p><b>Author id</b>: ${userId}</p>
-//           <p class="post-body">${body}</p>
-//         </li>`;
-//     })
-//     .join("");
-//   userList.innerHTML = markup;
-// }
+function oldData() {
+  const URL1 = `https://jsonplaceholder.typicode.com/users`
 
+  return fetch((URL1)).then((response) => response.json()).then((val) => console.log(val))
+}
+btn.addEventListener("click", fetchData)
+btn.addEventListener("click",oldData)
